@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#B8DDF2">
+  <meta name="description" content="NASHAMA Challenge — interactive technology missions inspired by Jordanian spirit and ingenuity.">
+  <title>NASHAMA Challenge | Discover Your Challenge</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Nashama Challenge home" id="brandHome">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 3 29 15 42 10 36 23 45 31 31 33 24 45 17 33 3 31 12 23 6 10 19 15Z" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M24 13 27 21 35 24 27 27 24 35 21 27 13 24 21 21Z" fill="currentColor"/></svg></span>
+        <span><strong>NASHAMA</strong><small>CHALLENGE</small></span>
+      </a>
+      <div class="event-tag"><span class="pulse-dot"></span> JORDAN · INNOVATION IN ACTION</div>
+    </header>
+
+    <main id="app" tabindex="-1">
+      <section class="screen welcome-screen active" data-screen="welcome">
+        <div class="welcome-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> YOUR NEXT CHALLENGE STARTS HERE</div>
+          <h1>Think boldly.<br><span>Build what’s next.</span></h1>
+          <p class="lead">Step into a hands-on technology mission. Explore a path, solve a challenge, and earn your NASHAMA achievement badge.</p>
+          <div class="welcome-actions"><button class="btn btn-primary btn-large" id="startBtn">Start your journey <span aria-hidden="true">↗</span></button><div class="micro-note"><span class="mini-shield">✦</span> 4 paths <i></i> 2-minute missions <i></i> No sign-up</div></div>
+          <div class="trust-row"><span>BUILT FOR CURIOUS MINDS</span><span class="trust-rule"></span><span>LEARN BY DOING</span></div>
+        </div>
+        <div class="hero-art" aria-label="Abstract geometric emblem inspired by Jordanian heritage">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="hero-glow"></div>
+          <div class="hero-emblem nashama-logo" role="img" aria-label="شعار النشامى">
+            <svg class="nashama-star" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 3 72 35 104 20 86 49 117 63 84 69 91 104 63 84 48 116 43 82 9 91 31 64 3 44 38 43Z" fill="#fff"/><path d="M60 3 60 60 104 20 73 62 117 63 60 60 91 104 60 60 48 116 48 69 9 91 45 58 3 44 60 60 38 43Z" fill="#dceef8" opacity=".9"/></svg>
+            <span lang="ar" dir="rtl">النشامى</span>
+          </div>
+          <div class="float-card float-top"><span class="float-icon">✦</span><span><b>YOUR MISSION</b><small>Make it count.</small></span></div>
+          <div class="float-card float-bottom"><span class="float-number">04</span><span><b>PATHS TO EXPLORE</b><small>One bold next step</small></span></div>
+          <div class="hero-caption">COURAGE · CURIOSITY · CREATIVITY</div>
+        </div>
+        <div class="welcome-bottom"><span>01 / DISCOVER</span><span>DESIGNED FOR THE NEXT GENERATION OF INNOVATORS</span></div>
+      </section>
+
+      <section class="screen path-screen" data-screen="paths" hidden>
+        <div class="section-heading">
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> CHOOSE YOUR MISSION</div><h2>Which path will you take?</h2><p>Pick the challenge that sparks your curiosity. You can explore every path.</p></div>
+          <div class="step-chip"><span>01</span> PATH SELECTION</div>
+        </div>
+        <div class="path-grid" id="pathGrid"></div>
+        <div class="section-foot"><span><span class="gold-star">✦</span> Every path leads to a new skill.</span><button class="text-button" id="backWelcome">← Back to welcome</button></div>
+      </section>
+
+      <section class="screen warmup-screen" data-screen="warmup" hidden>
+        <div class="challenge-topline"><button class="text-button" id="exitWarmup">← Change path</button><span class="step-chip" id="warmupPathLabel">WARM-UP</span></div>
+        <div class="progress-track"><div class="progress-fill" id="warmupProgress"></div></div>
+        <div class="warmup-layout">
+          <div class="warmup-intro"><div class="eyebrow"><span class="eyebrow-line"></span> GET INTO THE FLOW</div><h2>Warm up<br><span>your thinking.</span></h2><p>Two quick questions to get familiar with your mission. Choose an answer to see why it works.</p><div class="warmup-counter"><strong id="warmupCount">01</strong><span> / 02 QUESTIONS</span></div></div>
+          <article class="question-card">
+            <div class="question-meta"><span class="question-label">WARM-UP QUESTION</span><span class="question-time">~ 20–40 SEC</span></div>
+            <h3 id="warmupQuestion"></h3><div class="answer-list" id="warmupAnswers"></div>
+            <div class="feedback" id="warmupFeedback" aria-live="polite" hidden></div>
+            <div class="question-footer"><span id="warmupHint">Select one answer to continue.</span><button class="btn btn-primary" id="warmupNext" disabled>Continue <span>→</span></button></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="screen mission-screen" data-screen="mission" hidden>
+        <div class="mission-head"><button class="text-button" id="exitMission">← Exit mission</button><div class="mission-title"><span class="mission-kicker" id="missionPath">AI SPECIALIST</span><h2 id="missionName">Train the Machine</h2></div><div class="timer-box" id="timerBox"><span class="timer-icon">◷</span><span><small>TIME LEFT</small><strong id="timer">02:00</strong></span></div></div>
+        <div class="mission-progress"><span id="missionProgressText">MISSION BRIEFING</span><div class="progress-track"><div class="progress-fill" id="missionProgress"></div></div></div>
+        <div id="missionContent" class="mission-content"></div>
+        <div class="mission-actions"><p id="missionStatus" aria-live="polite">Review the evidence, then submit your solution.</p><button class="btn btn-primary btn-large" id="submitMission">Submit solution <span>↗</span></button></div>
+      </section>
+
+      <section class="screen result-screen" data-screen="result" hidden>
+        <div class="result-layout">
+          <div class="result-copy"><div class="result-symbol" id="resultSymbol">✦</div><div class="eyebrow"><span class="eyebrow-line"></span> MISSION REPORT</div><h2 id="resultTitle">Mission complete.</h2><p id="resultMessage"></p><div class="result-stats"><div><strong id="resultAttempts">01</strong><span>ATTEMPTS</span></div><div><strong id="resultTime">00:00</strong><span>TIME USED</span></div><div><strong>100%</strong><span>DETERMINATION</span></div></div><div class="result-actions"><button class="btn btn-primary btn-large" id="downloadBadge">Download badge <span>↓</span></button><button class="btn btn-secondary" id="anotherPath">Try another path</button><button class="text-button" id="retryMission" hidden>↻ Retry this mission</button></div></div>
+          <div class="badge-preview-wrap"><div class="badge-caption">YOUR EARNED ACHIEVEMENT <span>✦</span></div><div id="badgePreview" class="badge-preview"></div><p class="badge-note"><span>✓</span> Yours to keep. No account needed.</p></div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><span>© NASHAMA CHALLENGE</span><span>MADE FOR THE SPIRIT OF DISCOVERY <b>✦</b></span><span>LOCAL · PRIVATE · INTERACTIVE</span></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
